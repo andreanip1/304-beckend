@@ -21,17 +21,45 @@ BODY
 
 const express = require('express'); //toda aplicação é um app 
 const app = express(); 
-app.get('/', (req, res) => {    //app.method('endereco')
-    res.send("Hello Word!";)
-})
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
-app.listen(3000); //app.listen(porta);
+app.get('/', (req, res) => {    //app.method('endereco')
+    if(!req.body.pudim){
+        res.send('Você não tem pudim');
+    } else {
+        res.send('')
+    }
+});
+
+/*
+app.get('/', (req, res) => {    //app.method('endereco')
+    res.send("Hello Word!");
+});
+*/
+
 
 /* 
 porta de HTTPS é 443
 a porta padrão de HTPP é 80
 porta é a  identificação de serviço 
+*/
 
+//testar API: POSTMAN
+
+app.post ('/', (req, res) =>{
+    res.send('Recebi um POST');
+});
+
+app.get('/pudim', (req,res) => {
+    res.send({
+        sabor:'Leite',
+        cobertura: 'Caramelo',
+        frescura: 'Uva Passa'
+    });
+});
+
+app.listen(3000); //app.listen(porta);  //sempre deve estar no fim do código 
 
 
 
