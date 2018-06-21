@@ -21,7 +21,7 @@ BODY
 
 const express = require('express'); //toda aplicação é um app 
 const app = express(); 
-app.get('/, (req, res)' => {    //app.method('endereco')
+app.get('/', (req, res) => {    //app.method('endereco')
     res.send("Hello Word!";)
 })
 
